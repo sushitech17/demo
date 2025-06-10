@@ -1,27 +1,151 @@
 <!DOCTYPE html>
-<html><head><title>demo</title>
-<style>
+<html>
+<head><title>Transparent Nav + Dark Mode</title>
+    <style>
+    :root {
+      --text-color: white;
+      --bg-color: #111;
+      --section-bg: #222;
+    }
 
-.hero {height:100vh; background:url('https://media.istockphoto.com/id/1322161035/photo/traveler-asian-woman-relax-in-hammock-on-summer-beach-thailand.jpg?s=1024x1024&w=is&k=20&c=WixK_FDWueKuItqGYZLqjqCiIhct1eUMZLcYg3-hfOA=') no-repeat center center/cover; dispay:flex;  ; color:#44b7d6;text-align:center;position:relative;}
+    body.light {
+      --text-color: #222;
+      --bg-color: white;
+      --section-bg: #f4f4f4;
+    }
 
-</style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+    }
+
+    .hero {
+      height: 100vh;
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+      position: relative;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .toggle-btn {
+      background: none;
+      border: 2px solid var(--text-color);
+      color: var(--text-color);
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .hero-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    .hero-text h1 {
+      font-size: 3rem;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+    }
+
+    section {
+      padding: 80px 20px;
+      background-color: var(--section-bg);
+      color: var(--text-color);
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .hero-text h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
 </head>
-
 <body>
-<nav>
-<div class="logo">Mybrand</div>
-<ul>
-<li>Home</li> <li>about</li> <li>service</li> <li>contact</li>
-</nav>
 
-<section class="hero"> 
+  <div class="hero">
+    <nav>
+      <div class="logo">MySite</div>
+      <ul>
+        <li><a href="#section1">Home</a></li>
+        <li><a href="#section2">ask help</a></li>
+        <li><a href="#section3">Contact to resque</a></li>
+      </ul>
+      <br>
+      <button class="toggle-btn" onclick="toggleDarkMode()">Dark Mode</button>
+    </nav>
+    <div class="hero-text">
+      <h1>DIZASTER HELP</h1>
+    </div>
+  </div>
 
-<div class="hero-content"> 
-<h1>welcome</h1> <p>ghghgjgjhgg</p>
-<butto>START</BUTTON>
-</div>
-</section>
+  <section id="section1">
+    <h2>Welcome to MySite</h2>
+    <p>This is a scrolling section below the hero.</p>
+  </section>
 
+  <section id="section2">
+    <h2>Gallery</h2>
+    <p>Beautiful panoramic views, captured for you.</p>
+  </section>
+
+  <section id="section3">
+    <h2>Contact</h2>
+    <p>Let's work together — contact us!</p>
+  </section>
+
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle('light');
+    }
+  </script>
 </body>
 </html>
-
