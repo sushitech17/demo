@@ -2,6 +2,7 @@
 // set server node http 
 //set express server env 
 //set mongoose 
+//set env file
 
 fs : /home/suraj/app/be.js
 
@@ -13,8 +14,44 @@ httpheader{200, {content type : txt/html};
 res.end;})./listen(3000);
 
 //express server 
-const express= require("express");
-const mongoose= requires("mongoose");
+const express = require("express");
+const mongoose = requires("mongoose");
+const path = require("path");
+require('dotenv').config();
+
+const app=express();
+const PORT =process.env.PORT || 5000;
+
+app.use(express.json());
+app.use(express.static(path.join(_drirname,'..','public')));
+
+//connect mongodb
+mongoose.connect(process.env.MONGO_URL,{useNewUrlParser:true,useUnifiedTopoogy:true})
+.then(() => console.log("MongoDB Connected"))
+.catch(err => console.error(err));
+
+//schema
+ const Taskschema = new mongoose.Schema({   title:String, completes:Boolean });
+conts Task =mongoose.model('Task',TaskSchema);
+
+//api route 
+app.get('/api/tasks',async(req,res) => { const tasks=await task.find();
+res.json(tasks); });
+
+app.post('/api/tasks',async(req,res) => { const newTask= new Task(req.body);
+await newTask.save();
+res.json(newTask); });
+
+app.delete('api/tasks/:id,ascync(req,res) => { 
+awaitTask.findByIdDelete(req.params.id);
+res.json({success:true}); }); 
+
+app.listen(PORT, () => console.log('Server run on por ${port'));
+
+//.env
+MONGO_URI=our mongodb atlas connection
+
+
 
 
 
