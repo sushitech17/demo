@@ -1,6 +1,22 @@
-const http=require('http);
+// files structure for it 
+// set server node http 
+//set express server env 
+//set mongoose 
 
-http.createServer( function(req,res){
-res.write(200,{contet:type});
-res.end; })./listen(3000);
+fs : /home/suraj/app/be.js
+
+//node server 
+const http= require("http")
+
+htt.createServer( frunction(req,res)
+httpheader{200, {content type : txt/html};
+res.end;})./listen(3000);
+
+//express server 
+const express= require("express");
+const mongoose= requires("mongoose");
+
+
+
+
 
