@@ -51,7 +51,30 @@ app.listen(PORT, () => console.log('Server run on por ${port'));
 //.env
 MONGO_URI=our mongodb atlas connection
 
+// jwt auth npm install jesonwebtoken dotenv 
+const jwt = require("jsonwebtoken");
+require('dotnev").config();
 
+app.use(express.json());
+
+// user in db 
+const user ( 
+id:1,
+username:'testuser'.
+password:'password123' //store in secret
+};
+
+// generate jwt token 
+function authenticateToken(user) { 
+return jwt.sign({ id:user.id, username: user.username }, process.env.JWT_SECRET.{ expressIn:'th'}); }
+
+//middleware to verify token 
+function authToken(req,res,next) { 
+const authHeader
+
+
+//o auth
+//payment gateway 
 
 
 
